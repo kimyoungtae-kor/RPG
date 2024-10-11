@@ -3,13 +3,13 @@ package rpgg;
 import monster.Monster;
 
 public abstract class Character {
-	public String name;
-	public int hp;
-	public int attack;
-	public int def;
-	public int level;
-	public int exp;
-	public int maxHp;
+	private String name;
+	private int hp;
+	private int attack;
+	private int def;
+	private int level;
+	private int exp;
+	private int maxHp;
 	
 	public Character(String name,int hp,int attack, int def , int maxhp) {
 		this.name = name;
@@ -21,6 +21,78 @@ public abstract class Character {
 		this.maxHp = maxhp;
 
 	}
+	
+	
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public int getHp() {
+		return hp;
+	}
+
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+
+	public int getAttack() {
+		return attack;
+	}
+
+
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+
+
+	public int getDef() {
+		return def;
+	}
+
+
+	public void setDef(int def) {
+		this.def = def;
+	}
+
+
+	public int getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+
+	public int getExp() {
+		return exp;
+	}
+
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
+
 	public void attack(Monster monster) {
 		int dmg = this.attack - monster.getDefense();
 		
@@ -48,7 +120,7 @@ public abstract class Character {
 //
 //		}
 // if문은 경험치 음수로 출력되는 문제가생김  필요경험치가 현재 경험치보다 값이 더높아서 발생함
-		while(requireExp <= exe) {
+		while(requireExp <= this.exp) {
 			exp -= requireExp;
 			
 			System.out.println("레벨업!!!");

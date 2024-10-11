@@ -63,12 +63,12 @@ public abstract class Monster {
 	public void attack(Character player) {
 		
 		
-		int dmg = this.attackPower - player.def;
+		int dmg = this.attackPower - player.getDef();
 		if(dmg > 0) {
-			player.hp -= dmg;
-			System.out.println(name + "은"+player.name+"에게 " + dmg +"데미지를 입혔다");
+			player.setHp(player.getHp() - dmg);
+			System.out.println(name + "은"+player.getName()+"에게 " + dmg +"데미지를 입혔다");
 		}else {
-			System.out.println(name + "은"+player.name+"에게 데미지를입히지못햇다");
+			System.out.println(name + "은"+player.getName()+"에게 데미지를입히지못햇다");
 		}
 		
 	}

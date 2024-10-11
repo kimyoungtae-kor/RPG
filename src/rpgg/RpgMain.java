@@ -6,12 +6,12 @@ import java.util.Scanner;
 import monster.Monster;
 import monster.Slime;
 import monster.Goblin;
+import monster.L1monsterSpawn;
 
 public class RpgMain {
 
 	public static void start() {
-		Monster[] monsteridx = {new Slime(),new Goblin()};
-		
+		L1monsterSpawn spawnMonster = new L1monsterSpawn();
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("당신의 캐릭터이름을 입력해주세요 enter > ");
@@ -19,10 +19,10 @@ public class RpgMain {
 		
 		Character player = new Warrior(name);
 		
-		while(player.hp >0) {
+		while(player.getHp() >0) {
 			
-			int spawnMonster = (int)(Math.random() * monsteridx.length);
-			Monster monster = monsteridx[spawnMonster];
+			
+			Monster monster = spawnMonster.getRandomMonster();
 			System.out.println(name+" 은(는)"+"야생의 "+ monster.name +"만났다!");
 			
 			while(monster.hp >0) {
@@ -42,10 +42,10 @@ public class RpgMain {
 				
 				if(monster.hp <=0) {
 					player.grow(monster.takeexe);
-					System.out.println(monster.name + "은 죽었다" + " 현재경험치 : " + player.exp);
+					System.out.println(monster.name + "은 죽었다" + " 현재경험치 : " + player.getExp());
 				}
 			}
-			monsteridx[spawnMonster].hp = monsteridx[spawnMonster].maxHp;
+			monster.hp = monster.maxHp;
 		}
 
 	}
