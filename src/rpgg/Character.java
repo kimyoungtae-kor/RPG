@@ -1,17 +1,21 @@
 package rpgg;
 
+import java.util.List;
+
 import monster.Monster;
 
 public abstract class Character {
 	private String name;
 	private int hp;
-	private int attack;
+	private static int attack;
 	private int def;
 	private int level;
 	private int exp;
 	private int maxHp;
+	private int mp;
 	
-	public Character(String name,int hp,int attack, int def , int maxhp) {
+	
+	public Character(String name,int hp,int attack, int def , int maxhp,int mp) {
 		this.name = name;
 		this.hp = hp;
 		this.attack = attack;
@@ -19,7 +23,7 @@ public abstract class Character {
 		this.level = 1;
 		this.exp = 0;
 		this.maxHp = maxhp;
-
+		this.mp = mp;
 	}
 	
 	
@@ -35,6 +39,16 @@ public abstract class Character {
 
 	public int getHp() {
 		return hp;
+	}
+
+
+	public int getMp() {
+		return mp;
+	}
+
+
+	public void setMp(int mp) {
+		this.mp = mp;
 	}
 
 
@@ -94,42 +108,12 @@ public abstract class Character {
 
 
 	public void attack(Monster monster) {
-		int dmg = this.attack - monster.getDefense();
-		
-		if(dmg > 0) {
-			monster.takeDamge(dmg);
-			System.out.println(name + "은 "+monster.getName() + " 에게 " + dmg + "데미지를 입혔다!" + name+"남은체력:" +hp);
-		}else {
-			System.out.println(name + "은 데미지를 입히지못했다!");
-		}
 	}
 	
 	public void grow(int exe) {
-		this.exp += exe;
-		int lev = this.level;
-		int requireExp = (int) (10 * Math.pow(2, level -1));
-		System.out.println("rexp  "+requireExp);
-		System.out.println("exp  "+exp);
-//		if (requireExp >= exe) {
-//			exp -= requireExp;
-//			
-//			System.out.println("레벨업!!!");
-//
-//			level++;
-//			hp = maxHp;
-//
-//		}
-// if문은 경험치 음수로 출력되는 문제가생김  필요경험치가 현재 경험치보다 값이 더높아서 발생함
-		while(requireExp <= this.exp) {
-			exp -= requireExp;
-			
-			System.out.println("레벨업!!!");
-			level++;
-			hp = maxHp;
-			
-			requireExp = (int) (10 * Math.pow(2, level -1));
-		}
 		
 	}
+	public abstract void useSkill();
+
 
 }

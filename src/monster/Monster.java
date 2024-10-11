@@ -25,7 +25,6 @@ public abstract class Monster {
 	
 	public void takeDamge(int damage) {
 		this.hp -= damage;
-		System.out.println(name + " 에게 " + damage + "데미지를 입혔다!" + name+"남은체력:" + hp);
 	}
 
 	public String getName() {
@@ -66,7 +65,7 @@ public abstract class Monster {
 		int dmg = this.attackPower - player.getDef();
 		if(dmg > 0) {
 			player.setHp(player.getHp() - dmg);
-			System.out.println(name + "은"+player.getName()+"에게 " + dmg +"데미지를 입혔다");
+			System.out.println(name + "은"+player.getName()+"에게 " + dmg +"데미지를 입혔다 " + player.getName()+"남은체력:" +player.getHp());
 		}else {
 			System.out.println(name + "은"+player.getName()+"에게 데미지를입히지못햇다");
 		}
