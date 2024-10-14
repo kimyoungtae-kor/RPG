@@ -9,7 +9,7 @@ public abstract class Character {
 	private int hp;
 	private static int attack;
 	private int def;
-	private int level;
+	private int level = 1;
 	private int exp;
 	private int maxHp;
 	private int mp;
@@ -20,7 +20,6 @@ public abstract class Character {
 		this.hp = hp;
 		this.attack = attack;
 		this.def = def;
-		this.level = 1;
 		this.exp = 0;
 		this.maxHp = maxhp;
 		this.mp = mp;
@@ -113,7 +112,13 @@ public abstract class Character {
 	public void grow(int exe) {
 		
 	}
-	public abstract void useSkill();
+
+
+	protected abstract void printSkills();
+
+
+	protected void useSkill( Monster target) {
+	}
 
 
 }

@@ -2,7 +2,7 @@ package monster;
 
 import rpgg.Character;
 
-public abstract class Monster {
+public class Monster {
 	public String name;
 	public int maxHp;
 	public int hp;
