@@ -3,6 +3,8 @@ package rpgg;
 import java.util.List;
 import java.util.Scanner;
 
+import merchant.Merchant;
+import merchant.WarriorItemList1;
 import monster.Monster;
 import monster.L1monsterSpawn;
 import monster.L2monsterSpawn;
@@ -15,21 +17,27 @@ public class RpgMain {
 	public static void start() {
 		L1monsterSpawn spawnMonster = new L1monsterSpawn();
 		L2monsterSpawn spawnMonster2 = new L2monsterSpawn();
-
-		String name = RpgUtils.next("당신의 캐릭터이름을 입력해주세요",String.class,x -> x.length() > 0 && x.length()<=5,"이름은 1~5글자 입력해주세요.");
+		WarriorItemList1 warriorItemList1 = new WarriorItemList1();
 		
-		Character player = new Warrior(name);
+		Merchant merchant;
+		
+		int monsterClear = 0;
+
+		//String name = RpgUtils.next("당신의 캐릭터이름을 입력해주세요",String.class,x -> x.length() > 0 && x.length()<=5,"이름은 1~5글자 입력해주세요.");
+		
+		Character player = new Warrior("김용태");
 		
 		while(player.getHp() >0) {
 			Monster monster;
 			int turn = 1;
+			
 			if(player.getLevel()>1) {
 				monster = spawnMonster2.createMonster();
 			}else {
 				monster = spawnMonster.createMonster();
 			}
 
-			System.out.println(name+" 은(는)"+"야생의 "+ monster.name +"만났다!");
+			System.out.println("김용태"+" 은(는)"+"야생의 "+ monster.name +"만났다!");
 			
 			while(monster.hp >0) {
 				
@@ -47,6 +55,9 @@ public class RpgMain {
 							turn = 0;
 						}else if(ch2 == 2) {
 							player.useSkill(monster);
+							if(player.getNoSkill() == false) {
+								turn = 0;
+							}
 						}
 					}
 				}else if(turn % 2 == 0){
@@ -68,6 +79,7 @@ public class RpgMain {
 				}
 			}
 			monster.hp = monster.maxHp;
+			player.setMp(player.getMaxMp());
 		}
 
 	}

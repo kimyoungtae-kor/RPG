@@ -23,6 +23,14 @@ public class SkillList {
 	public void setSkillName(String skillName) {
 		this.skillName = skillName;
 	}
+	public int getManaRequired() {
+		return manaRequired;
+	}
+
+	public void setManaRequired(int manaRequired) {
+		this.manaRequired = manaRequired;
+	}
+
 	@Override
 	public String toString() {
 		return "[" + skillNum + "] " + skillName + "(필요마나 : "+manaRequired+")";

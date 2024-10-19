@@ -9,6 +9,7 @@ import skill.SkillList;
 
 public class Warrior extends Character{
 	private int skillnum = 1;
+	private boolean noSkill = true;
 	private List<SkillList> skills;
 	public Warrior(String name) {
 		super(name, 100, 20, 5,100,30);
@@ -47,6 +48,8 @@ public class Warrior extends Character{
 			super.setHp(super.getMaxHp());
 			super.setAttack(super.getAttack()+5);
 			super.setDef(super.getDef()+1);
+			super.setMaxMp(super.getMaxMp()+5);
+			super.setMp(super.getMaxMp());
 
 			
 			
@@ -82,8 +85,15 @@ public class Warrior extends Character{
 
 		
 		if(skillselect.getSkillName() == "전사의 함성") {
+			if(super.getMp() >= skillselect.getManaRequired()) {
 			super.setHp(super.getHp() + 30);
+			super.setMp(super.getMp() - skillselect.getManaRequired());
+			super.setNoSkill(true);
 			System.out.println(super.getName() + "은(는) 전사의 함성을 사용했다! 체력이 30 회복됩니다 현재체력: "+super.getHp());
+			}else {
+				System.out.println("마나가 부족합니다 현재 마나 : "+super.getMp());
+				super.setNoSkill(false);
+			}
 		}
 		
 	}

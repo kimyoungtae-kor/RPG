@@ -35,7 +35,7 @@ public class RpgUtils {
 	 */
 
 	// 입력 반복
-	static <T> T next(String msg, Class<T> clazz, Predicate<T> con, String errMsg) {
+	public static <T> T next(String msg, Class<T> clazz, Predicate<T> con, String errMsg) {
 		while (true) {
 			try {
 				T t = next(msg, clazz);

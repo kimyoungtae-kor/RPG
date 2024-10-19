@@ -13,7 +13,9 @@ public abstract class Character {
 	private int exp;
 	private int maxHp;
 	private int mp;
-	
+	private int maxMp;
+	private int gold = 100;
+	private boolean noSkill = false;
 	
 	public Character(String name,int hp,int attack, int def , int maxhp,int mp) {
 		this.name = name;
@@ -22,12 +24,44 @@ public abstract class Character {
 		this.def = def;
 		this.exp = 0;
 		this.maxHp = maxhp;
+		this.maxMp = mp;
 		this.mp = mp;
 	}
 	
 	
+	public int getGold() {
+		return gold;
+	}
+
+
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
+
+
+	public int getMaxMp() {
+		return maxMp;
+	}
+
+
+	public void setMaxMp(int maxMp) {
+		this.maxMp = maxMp;
+	}
+
+
 	public String getName() {
 		return name;
+	}
+	
+	
+
+	public boolean getNoSkill() {
+		return noSkill;
+	}
+
+
+	public void setNoSkill(boolean noSkill) {
+		this.noSkill = noSkill;
 	}
 
 
