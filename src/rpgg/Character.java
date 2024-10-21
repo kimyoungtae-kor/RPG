@@ -11,6 +11,7 @@ public abstract class Character {
 	private int def;
 	private int level = 1;
 	private int exp;
+	private int requiredExp;
 	private int maxHp;
 	private int mp;
 	private int maxMp;
@@ -69,6 +70,14 @@ public abstract class Character {
 		this.name = name;
 	}
 
+	public int getRequiredExp() {
+		return requiredExp;
+	}
+
+
+	public void setRequiredExp(int requiredExp) {
+		this.requiredExp = requiredExp;
+	}
 
 	public int getHp() {
 		return hp;

@@ -50,22 +50,26 @@ public class Warrior extends Character{
 			super.setDef(super.getDef()+1);
 			super.setMaxMp(super.getMaxMp()+5);
 			super.setMp(super.getMaxMp());
-
-			
-			
 			requireExp = (int) (10 * Math.pow(2, super.getLevel() -1));
 		}
+		super.setRequiredExp(requireExp);
 		
 	}
 	
 
 
 	public void learnSkills() {
+
+		
 		if (super.getLevel() == 2) {
 			skills.add(new SkillList(skillnum, "전사의 함성", 30));
 			System.out.println("새로운 스킬을 배웠습니다: 전사의 함성");
-			skillnum++;
+
+		}else if(super.getLevel() >= 3 && skills.get(0) !=null) {
+			skills.add(new SkillList(skillnum, "파워스트라이크",15));
+			System.out.println("새로운 스킬을 배웠습니다: 파워스트라이크");
 		}
+		skillnum++;
 	}
 	@Override
 	public void printSkills() {
@@ -90,6 +94,17 @@ public class Warrior extends Character{
 			super.setMp(super.getMp() - skillselect.getManaRequired());
 			super.setNoSkill(true);
 			System.out.println(super.getName() + "은(는) 전사의 함성을 사용했다! 체력이 30 회복됩니다 현재체력: "+super.getHp());
+			}else {
+				System.out.println("마나가 부족합니다 현재 마나 : "+super.getMp());
+				super.setNoSkill(false);
+			}
+		}
+		if(skillselect.getSkillName() == "파워스트라이크") {
+			if(super.getMp() >= skillselect.getManaRequired()) {
+			target.setHp(target.getHp()- super.getAttack() * 2);
+			super.setMp(super.getMp() - skillselect.getManaRequired());
+			super.setNoSkill(true);
+			System.out.println(super.getName() + "은(는) 파워스트라이크를 사용했다! 적에게 준피해 : "+ super.getAttack()*2 +" "+ target.getName()+" 의 남은체력:"+target.getHp());
 			}else {
 				System.out.println("마나가 부족합니다 현재 마나 : "+super.getMp());
 				super.setNoSkill(false);

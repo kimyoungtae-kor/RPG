@@ -8,8 +8,8 @@ public class L1monsterSpawn{
 	
 	public Monster createMonster(){
 		List<Monster> monsters = new ArrayList<>();
-		monsters.add(new Monster("슬라임", 50, 10, 2,45));
-		monsters.add(new Monster("고블린", 50, 15, 5,50));
+		monsters.add(new Monster("슬라임", 50, 10, 2,45,20));
+		monsters.add(new Monster("고블린", 50, 15, 5,50,30));
 		Collections.shuffle(monsters);
 		return monsters.get(0);
 	}

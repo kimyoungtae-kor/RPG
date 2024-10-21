@@ -21,7 +21,7 @@ public class RpgMain {
 		
 		Merchant merchant;
 		
-		int monsterClear = 0;
+		float monsterClear = 0;
 
 		//String name = RpgUtils.next("당신의 캐릭터이름을 입력해주세요",String.class,x -> x.length() > 0 && x.length()<=5,"이름은 1~5글자 입력해주세요.");
 		
@@ -30,13 +30,20 @@ public class RpgMain {
 		while(player.getHp() >0) {
 			Monster monster;
 			int turn = 1;
+			System.out.println();
+
 			
 			if(player.getLevel()>1) {
 				monster = spawnMonster2.createMonster();
 			}else {
 				monster = spawnMonster.createMonster();
 			}
-
+			
+			if(monsterClear >=1 || Math.random() < 0.2 + monsterClear) {
+				warriorItemList1.helloMerchant(player);
+				monsterClear = 0;
+				continue;
+			}
 			System.out.println("김용태"+" 은(는)"+"야생의 "+ monster.name +"만났다!");
 			
 			while(monster.hp >0) {
@@ -72,12 +79,17 @@ public class RpgMain {
 				turn++;
 				if(monster.hp <=0) {
 					player.grow(monster.takeexe);
-					System.out.println(monster.name + "은 죽었다" + " 현재경험치 : " + player.getExp());
+
+					System.out.println(monster.name + "은 죽었다" + "흭득 골드:"+monster.getTakegold()+" 흭득경험치 :"+monster.getTakeexe());
+					System.out.println(player.getName()+" 현재경험치 : " + player.getExp()+"다음 레벨업 필요경험치 :"+player.getRequiredExp());
 				}else if(player.getHp() <=0) {
 					System.out.println(player.getName() + "은(는) 죽었습니다 게임을 종료합니다");
 					return;
 				}
 			}
+			System.out.println(Math.random());
+			System.out.println(0.2+monsterClear);
+			monsterClear += 0.2;
 			monster.hp = monster.maxHp;
 			player.setMp(player.getMaxMp());
 		}

@@ -9,8 +9,9 @@ public class Monster {
 	public int attackPower;
 	public int defense;
 	public int takeexe;
+	private int takegold;
 
-	public Monster(String name, int hp, int attackPower, int defense,int takeexe) {
+	public Monster(String name, int hp, int attackPower, int defense,int takeexe,int takegold) {
 		super();
 		this.name = name;
 		this.hp = hp;
@@ -18,6 +19,7 @@ public class Monster {
 		this.attackPower = attackPower;
 		this.defense = defense;
 		this.takeexe = takeexe;
+		this.takegold = takegold;
 	}
 	
 	
@@ -38,6 +40,48 @@ public class Monster {
 	public int getHp() {
 		return hp;
 	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+
+
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
+	}
+
+
+
+
+	public int getTakeexe() {
+		return takeexe;
+	}
+
+
+
+
+	public void setTakeexe(int takeexe) {
+		this.takeexe = takeexe;
+	}
+
+
+
+
+	public int getTakegold() {
+		return takegold;
+	}
+
+
+
+
+	public void setTakegold(int takegold) {
+		this.takegold = takegold;
+	}
+
+
+
 
 	public void setHp(int hp) {
 		this.hp = hp;
@@ -71,6 +115,9 @@ public class Monster {
 		}
 		
 	}
+
+
+	
 	
 }
 
